@@ -1,16 +1,18 @@
-import { NextPage } from "next";
-import Head from "next/head";
+import { Flex, Heading, Link } from '@chakra-ui/core'
+import { NextPage } from 'next'
+import NextLink from 'next/link'
 
 const IndexPage: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>Github NextJs</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1>Hello World</h1>
-    </>
-  );
-};
+    <Flex flexDir="column" alignItems="center" m={4}>
+      <Heading as="h1" size="2xl">
+        Hello World
+      </Heading>
+      <NextLink href="/users" passHref>
+        <Link>Go home</Link>
+      </NextLink>
+    </Flex>
+  )
+}
 
-export default IndexPage;
+export default IndexPage

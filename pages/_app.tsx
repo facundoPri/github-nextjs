@@ -1,5 +1,5 @@
-import { AppProps } from "next/app";
-import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { AppProps } from 'next/app'
+import { ThemeProvider, CSSReset } from '@chakra-ui/core'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

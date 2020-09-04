@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}' --quiet --fix"
   },
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
@@ -23,8 +24,11 @@
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
-    "standard": "^14.3.4",
-    "standardx": "^5.0.0",
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "prettier": "^2.1.1",
     "typescript": "^4.0.2"
   },
   "eslintConfig": {
