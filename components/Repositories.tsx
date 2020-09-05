@@ -8,9 +8,9 @@ const Repositories: NextPage = () => {
     <List>
       <ListItem>
         <Box>
-          <Text>"{repo.name}"</Text>
-          <Text>"{repo.html_url}"</Text>
-          <Text>"{repo.language}"</Text>
+          <Text>"repo.name"</Text>
+          <Text>"repo.html_url"</Text>
+          <Text>"repo.language"</Text>
         </Box>
       </ListItem>
     </List>
