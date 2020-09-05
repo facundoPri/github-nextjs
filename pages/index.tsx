@@ -6,26 +6,27 @@ import {
   Input,
   Button,
   FormControl,
-  FormLabel,
-  FormHelperText,
-  useToast,
-  FormErrorMessage
+  FormErrorMessage,
+  Text
 } from '@chakra-ui/core'
 import { NextPage } from 'next'
 import NextLink from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useFetch } from '../hooks/useFetch'
+import api from '../services/api'
 
 const IndexPage: NextPage = () => {
   const { register, handleSubmit, watch, errors } = useForm()
-  const toast = useToast()
+  const { data, mutate } = useFetch('/users')
 
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  const onSubmit = async (info) => {
+    const response = await api.post('/users', info)
 
-  if (!!errors) {
-    console.log(errors.username)
+    const addUser = [...data, info]
+    console.log(addUser)
+
+    mutate(addUser, false)
   }
 
   return (
@@ -42,10 +43,22 @@ const IndexPage: NextPage = () => {
           <Button type="submit">Submit</Button>
         </Flex>
       </form>
-
-      <NextLink href="/users" passHref>
-        <Link>Go home</Link>
-      </NextLink>
+      <Flex flexDir="column">
+        {!data ? (
+          <Text>Loading...</Text>
+        ) : (
+          data.map((user) => {
+            console.log(user)
+            return (
+              <Flex key={user.id}>
+                <NextLink href={`/${user.username}`} passHref>
+                  <Link>{user.username}</Link>
+                </NextLink>
+              </Flex>
+            )
+          })
+        )}
+      </Flex>
     </Flex>
   )
 }
