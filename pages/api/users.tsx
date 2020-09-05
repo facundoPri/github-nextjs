@@ -1,25 +1,16 @@
 import { PrismaClient } from '@prisma/client'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-async function indexUsers() {
-  const prisma = new PrismaClient()
-  const users = await prisma.user.findMany()
-  return users
-}
+const prisma = new PrismaClient()
 
-async function postUser(userInfo) {
-  const prisma = new PrismaClient()
-  const user = await prisma.user.create(userInfo)
-  return user
-}
-
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'GET') {
-    const users = await indexUsers()
-    return res.json(users)
-  } else if (req.method === 'POST') {
-    const info = req.body
-    const user = await postUser({ data: { ...info } })
-    return res.json(user)
+export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+  switch (req.method) {
+    case 'GET':
+      const users = await prisma.user.findMany()
+      return res.json(users)
+    case 'POST':
+      const info = req.body
+      const user = await prisma.user.create({ data: { ...info } })
+      return res.json(user)
   }
 }
