@@ -17,7 +17,7 @@ import { useFetch } from '../hooks/useFetch'
 import api from '../services/api'
 
 const IndexPage: NextPage = () => {
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { register, handleSubmit, reset, errors } = useForm()
   const { data, mutate } = useFetch('/users')
 
   const onSubmit = async (info) => {
@@ -26,6 +26,7 @@ const IndexPage: NextPage = () => {
     const addUser = [...data, info]
     console.log(addUser)
 
+    reset({})
     mutate(addUser, false)
   }
 
