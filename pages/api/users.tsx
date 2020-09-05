@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 async function indexUsers() {
   const prisma = new PrismaClient()
@@ -12,16 +13,13 @@ async function postUser(userInfo) {
   return user
 }
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const users = await indexUsers()
-    res.json(users)
+    return res.json(users)
   } else if (req.method === 'POST') {
     const info = req.body
-
     const user = await postUser({ data: { ...info } })
-    console.log(info)
-    console.log(user)
-    res.json(user)
+    return res.json(user)
   }
 }
