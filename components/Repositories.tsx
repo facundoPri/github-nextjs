@@ -3,7 +3,7 @@ import React from 'react'
 import { List, ListItem, Text, Box } from '@chakra-ui/core'
 import { report } from 'process'
 
-const Repositories: NextPage = ({ data }) => {
+const Repositories: NextPage = () => {
   return (
     <List>
       <ListItem>
