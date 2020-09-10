@@ -11,8 +11,8 @@
         "tag": "Source",
         "source": "db"
       },
-      "argument": "url",
-      "value": "\"***\""
+      "argument": "provider",
+      "value": "\"sqlite\""
     },
     {
       "tag": "CreateArgument",
@@ -20,8 +20,8 @@
         "tag": "Source",
         "source": "db"
       },
-      "argument": "provider",
-      "value": "\"postgresql\""
+      "argument": "url",
+      "value": "\"***\""
     },
     {
       "tag": "CreateModel",
@@ -76,38 +76,6 @@
       "field": "username",
       "type": "String",
       "arity": "Required"
-    },
-    {
-      "tag": "CreateField",
-      "model": "User",
-      "field": "createdAt",
-      "type": "DateTime",
-      "arity": "Required"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "User",
-          "field": "createdAt"
-        },
-        "directive": "default"
-      }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "User",
-          "field": "createdAt"
-        },
-        "directive": "default"
-      },
-      "argument": "",
-      "value": "now()"
     }
   ]
 }
