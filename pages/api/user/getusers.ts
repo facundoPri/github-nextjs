@@ -8,7 +8,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const users = await prisma.user.findMany()
     res.status(200).json(users)
   } catch (e) {
-    res.status(500).json({ error: 'Unable to fetch users' })
+    console.log(e)
+    res.status(500).json({ error: 'Something go wrong' })
   } finally {
     await prisma.$disconnect()
   }

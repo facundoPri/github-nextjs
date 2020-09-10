@@ -17,10 +17,10 @@ import axios from 'axios'
 
 const IndexPage: NextPage = () => {
   const { register, handleSubmit, reset, errors } = useForm()
-  const { data, mutate } = useFetch('getusers')
+  const { data, mutate } = useFetch('user/getusers')
 
   const onSubmit = async (info) => {
-    axios.post('/api/createuser', info)
+    axios.post('/api/user/createuser', info)
 
     const addUser = [...data, info]
 
