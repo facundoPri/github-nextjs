@@ -14,17 +14,16 @@ import NextLink from 'next/link'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useFetch } from '../hooks/useFetch'
-import api from '../services/api'
+import axios from 'axios'
 
 const IndexPage: NextPage = () => {
   const { register, handleSubmit, reset, errors } = useForm()
-  const { data, mutate } = useFetch('/users')
+  const { data, mutate } = useFetch('getusers')
 
   const onSubmit = async (info) => {
-    const response = await api.post('/users', info)
+    axios.post('/api/createuser', info)
 
     const addUser = [...data, info]
-    console.log(addUser)
 
     reset({})
     mutate(addUser, false)

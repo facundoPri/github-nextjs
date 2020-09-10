@@ -1,9 +1,9 @@
 import useSWR from 'swr'
-import api from '../services/api'
+import axios from 'axios'
 
 export function useFetch(url: string) {
   const { data, error, mutate } = useSWR(url, async (url) => {
-    const response = await api.get(url)
+    const response = await axios.get(`/api/${url}`)
 
     return response.data
   })
