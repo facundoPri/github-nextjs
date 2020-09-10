@@ -17,6 +17,7 @@
     "@emotion/styled": "^10.0.27",
     "@prisma/cli": "2.6.2",
     "@prisma/client": "2.6.2",
+    "@vercel/node": "^1.8.2",
     "axios": "^0.20.0",
     "emotion-theming": "^10.0.27",
     "next": "9.5.3",
